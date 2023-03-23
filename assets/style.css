@@ -1,0 +1,24 @@
+.slider,
+.images,
+img{
+    width: 1000px;
+    height: 700px;
+    object-fit: cover;
+}
+
+.images img:not(.active){
+    display: none;
+}
+
+button{
+    border: none;
+    background-color: transparent;
+}
+
+.left{
+    left: 2rem;
+}
+
+.right{
+    right: 2rem;
+}
