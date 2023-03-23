@@ -22,8 +22,19 @@ const images = [
     }
 ];
 
-console.log(images);
+//console.log(images);
 
 /*
 1 - Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del markup statico: costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider.
+
+2 - Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
 */
+const slider = document.querySelector('.slider');
+for (let index = 0; index < images.length; index++) {
+    const singleImage = images[index];
+    //console.log(singleImage);
+    const imageList = document.createElement('img');
+    //console.log(imageList);
+    imageList.setAttribute('src', singleImage.image);
+    slider.appendChild(imageList);
+}
