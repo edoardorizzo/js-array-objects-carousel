@@ -30,17 +30,24 @@ let activeImage = 0;
 */
 
 const imagesElement = document.querySelector('.slide > .images');
+const titleElement = document.querySelector('.slide > .images');
 for (let i = 0; i < images.length; i++){
     const imgSrc = images[i];
-    const imgElement = `<img class="active" src="./assets/${imgSrc.image}" alt="">`
-
-    imagesElement.insertAdjacentHTML('beforeend', imgElement)
+    const imgElement = `<img class="title-img position-relative" src="./assets/${imgSrc.image}" alt="">`
+    //const ttlElement = `<h3 class="position-absolute" >${imgSrc.title}</h3>`
+    
+    //titleElement.insertAdjacentHTML('beforeend', ttlElement);
+    imagesElement.insertAdjacentHTML('beforeend', imgElement);
 }
+
+const firstImg = document.querySelector('img');
+firstImg.classList.add('active');
+
 /*
 3 - Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
 */  
-const rigthButton = document.getElementById('right_btn');
-rigthButton.addEventListener('click', function(){
+const rightBtn = document.getElementById('right_btn');
+rightBtn.addEventListener('click', function(){
     // select all slide
     const slideImagesElements = document.querySelectorAll('.slide > .images > img');
     console.log(slideImagesElements);
@@ -65,4 +72,33 @@ rigthButton.addEventListener('click', function(){
     //add the active class
     console.log(nextImage);
     nextImage.classList.add('active')
-  }) 
+})
+
+
+const leftBtn = document.getElementById('left_btn');
+leftBtn.addEventListener('click', function(){
+    // select all slide
+    const slideImagesElements = document.querySelectorAll('.slide > .images > img');
+    console.log(slideImagesElements);
+
+    //select the current slide
+    const currentSlide = slideImagesElements[activeImage];
+    console.log(currentSlide);
+
+    //remove the active class from the active image
+    currentSlide.classList.remove('active');
+
+    //increment the value of the active image variable
+    activeImage-- //decrement the value of activeImage of 1 every time we click on the next button
+
+    if(activeImage < 0) {
+        activeImage = images.length - 1;
+    }
+
+    //select the next slide
+    const nextImage = slideImagesElements[activeImage];
+
+    //add the active class
+    console.log(nextImage);
+    nextImage.classList.add('active')
+}) 
