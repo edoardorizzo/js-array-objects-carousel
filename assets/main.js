@@ -33,15 +33,18 @@ const imagesElement = document.querySelector('.slide > .images');
 const titleElement = document.querySelector('.slide > .images');
 for (let i = 0; i < images.length; i++){
     const imgSrc = images[i];
-    const imgElement = `<img class="title-img position-relative" src="./assets/${imgSrc.image}" alt="">`
-    //const ttlElement = `<h3 class="position-absolute" >${imgSrc.title}</h3>`
+    const imgElement = `<img class="title-img" src="./assets/${imgSrc.image}" alt="">`
+    const ttlElement = `<h3 class="position-absolute m-4" >${imgSrc.title}</h3>`
     
-    //titleElement.insertAdjacentHTML('beforeend', ttlElement);
+    titleElement.insertAdjacentHTML('beforeend', ttlElement);
     imagesElement.insertAdjacentHTML('beforeend', imgElement);
 }
 
 const firstImg = document.querySelector('img');
 firstImg.classList.add('active');
+const firstTitle = document.querySelector('h3');
+firstTitle.classList.add('active');
+firstTitle.style.color = 'white';
 
 /*
 3 - Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.

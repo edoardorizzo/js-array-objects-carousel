@@ -18,6 +18,10 @@ img{
     display: none;
 }
 
+.images h3:not(.active){
+    display: none;
+}
+
 button{
     border: none;
     background-color: transparent;
