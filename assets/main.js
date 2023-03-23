@@ -29,12 +29,18 @@ const images = [
 
 2 - Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
 */
-const slider = document.querySelector('.slider');
+const slider = document.querySelector('.images');
 for (let index = 0; index < images.length; index++) {
     const singleImage = images[index];
     //console.log(singleImage);
     const imageList = document.createElement('img');
     //console.log(imageList);
-    imageList.setAttribute('src', singleImage.image);
+    imageList.setAttribute('src', './assets/' + singleImage.image);
     slider.appendChild(imageList);
+    //imageList.classList.add('d-none')
 }
+
+/*
+3 - Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
+*/
+
