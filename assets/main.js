@@ -21,26 +21,48 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
-
-//console.log(images);
+let activeImage = 0;
 
 /*
 1 - Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del markup statico: costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider.
 
 2 - Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
 */
-const slider = document.querySelector('.images');
-for (let index = 0; index < images.length; index++) {
-    const singleImage = images[index];
-    //console.log(singleImage);
-    const imageList = document.createElement('img');
-    //console.log(imageList);
-    imageList.setAttribute('src', './assets/' + singleImage.image);
-    slider.appendChild(imageList);
-    //imageList.classList.add('d-none')
-}
 
+const imagesElement = document.querySelector('.slide > .images');
+for (let i = 0; i < images.length; i++){
+    const imgSrc = images[i];
+    const imgElement = `<img class="active" src="./assets/${imgSrc.image}" alt="">`
+
+    imagesElement.insertAdjacentHTML('beforeend', imgElement)
+}
 /*
 3 - Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
-*/
-
+*/  
+const rigthButton = document.getElementById('right_btn');
+rigthButton.addEventListener('click', function(){
+    // select all slide
+    const slideImagesElements = document.querySelectorAll('.slide > .images > img');
+    console.log(slideImagesElements);
+  
+    //select the current slide
+    const currentSlide = slideImagesElements[activeImage];
+  
+    //remove the active class from the active image
+    currentSlide.classList.remove('active');
+  
+    //increment the value of the active image variable
+    activeImage++ //increment the value of activeImage of 1 every time we click on the next button
+  
+    //check if the activeImage index exceeds the number of images available
+    if(activeImage >= images.length) {
+          activeImage = 0; //set the index to 0 to start from the beginning
+    }
+  
+    //select the next slide
+    const nextImage = slideImagesElements[activeImage];
+  
+    //add the active class
+    console.log(nextImage);
+    nextImage.classList.add('active')
+  }) 
