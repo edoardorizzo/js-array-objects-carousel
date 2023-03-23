@@ -44,7 +44,6 @@ const firstImg = document.querySelector('img');
 firstImg.classList.add('active');
 const firstTitle = document.querySelector('h3');
 firstTitle.classList.add('active');
-firstTitle.style.color = 'white';
 
 /*
 3 - Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
@@ -53,13 +52,18 @@ const rightBtn = document.getElementById('right_btn');
 rightBtn.addEventListener('click', function(){
     // select all slide
     const slideImagesElements = document.querySelectorAll('.slide > .images > img');
+    const slideTitleElements = document.querySelectorAll('.slide > .images > h3');
     console.log(slideImagesElements);
+    slideTitleElements
   
     //select the current slide
     const currentSlide = slideImagesElements[activeImage];
+    const currentTitle = slideTitleElements[activeImage];
+
   
     //remove the active class from the active image
     currentSlide.classList.remove('active');
+    currentTitle.classList.remove('active');
   
     //increment the value of the active image variable
     activeImage++ //increment the value of activeImage of 1 every time we click on the next button
@@ -71,10 +75,13 @@ rightBtn.addEventListener('click', function(){
   
     //select the next slide
     const nextImage = slideImagesElements[activeImage];
+    const nextTitle = slideTitleElements[activeImage];
   
     //add the active class
     console.log(nextImage);
+    console.log(nextTitle);
     nextImage.classList.add('active')
+    nextTitle.classList.add('active')
 })
 
 
